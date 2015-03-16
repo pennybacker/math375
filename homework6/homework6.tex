@@ -1,0 +1,50 @@
+\documentclass[12pt]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\newcommand{\class}{MATH 375}
+\newcommand{\term}{Spring 2015}
+\newcommand{\doctitle}{Homework 6}
+
+\newcommand{\matlab}{{\sc Matlab}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\renewcommand*{\vec}[1]{\boldsymbol{#1}}
+
+\newcommand*\circled[1]{\textcircled{\scriptsize{#1}}}
+
+\begin{document}
+
+Remember to adequately label all plots and include any \matlab~scripts and functions with your solutions. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question \emph{Jacobi Method}.
+\begin{parts}
+\part Write a function with the declaration \verb$function x = jacobi(A,x0,b,tol)$ which implements the Jacobi method for solving a linear system of equations. Its inputs are the matrix \verb$A$, an initial guess \verb$x0$, the right-hand-side \verb$b$, and an absolute error tolerance \verb$tol$. Its output \verb$x$ is an approximate solution of the linear system.
+\part Consider the matrices stored in \verb$jacobi1.mat$, \verb$jacobi2.mat$, and \verb$jacobi3.mat$. Are any of these matrices strictly diagonally dominant? With this information, what can you conclude about the convergence of the Jacobi method?
+\part Use the \verb$eig$ command to determine the spectral radius of the iteration matrix in each case. With this information, what can you conclude about the convergence of the Jacobi method?
+\part Use the Jacobi method to solve the linear system of equations in each case, with a right-hand-side so that the solution is $(1,1,\dots,1)$. Use the initial guess $(0,0,\dots,0)$ and the tolerance $10^{-6}$. For each of the three matrices, record the true error at each iteration (using the known solution). Plot the error as a function of iteration number on a single set of axes using the \verb$semilogy$ command. You should find that the matrices each require a different number of iterations. Explain your findings. What does this plot tell you about the convergence rate of the Jacobi Method?
+\end{parts}
+
+\question \emph{Gauss-Seidel Method}. This is another stationary iterative method with (perhaps) enhanced convergence properties. The iteration is given by
+\[\vec{x}_{k+1} = D^{-1}\big(\vec{b}-U\vec{x}_k-L\vec{x}_{k+1}\big)\]
+which means that you will need to solve a lower triangular system of equations for $\vec{x}_{k+1}$ at each step.
+
+\begin{parts}
+\part Write a function with the declaration \verb$function x = gauss_seidel(A,x0,b,tol)$ which implements the Gauss-Seidel method for solving a linear system of equations. Its inputs and outputs are the same as in the previous problem. \emph{Important}: Do not find the inverse of the matrix $D+L$. Instead, use the \verb$\$ operator to solve using forward substitution.
+\part  Repeat part (d) of the previous problem using the Gauss-Seidel method. For each of the three matrices, record the true error at each iteration (using the known solution). Plot the error as a function of iteration number on a single set of axes using the \verb$semilogy$ command. You should find that the matrices each require a different number of iterations. Explain your findings. What does this plot tell you about the convergence rate of the Gauss-Seidel method?
+\part Compare the convergence properties of the Gauss-Seidel method with the Jacobi method. What are some of the pros and cons of using one method versus the other?
+\end{parts}
+
+\end{questions}
+
+\end{document}

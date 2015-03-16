@@ -1,0 +1,48 @@
+\documentclass[12pt]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+
+\newcommand{\class}{MATH 375}
+\newcommand{\term}{Spring 2015}
+\newcommand{\doctitle}{Homework 2}
+
+\newcommand{\matlab}{{\sc Matlab}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+
+Remember to adequately label all plots and include any \matlab~scripts and functions with your solutions. A clear and complete presentation of your solutions is required for full credit.
+\begin{questions}
+
+\question Convert the following base-2 numbers to decimal: $1011.\overline{011}$, $11.101\overline{10}$.
+
+\question Sauer, Section 0.3, Exercises 1(b), 1(c), 8.
+
+\question Sauer, Section 0.4, Computer Exercise 3.
+
+\question Write a \matlab~function to solve the quadratic equation $ax^2 + bx + c = 0$ using the classical quadratic formula
+\[x_\pm = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} .\]
+
+\begin{parts}
+\part Test your function on the following cases:
+
+\begin{subparts}
+\subpart $a = 2$, $b = 3$, $c = 1$.
+\subpart $a = 1$, $b = 3$, $c = 4$.
+\end{subparts}
+In each case and for choice of sign, verify the accuracy of the numerical solution by comparing it with the exact solution.
+\part Now consider the case $a = 1$, $b = 3$, $c = 8^{-14}$. One solution is $x_- \approx -3$. Test your function on this case. It should perform poorly, so modify it as described in Example 0.6 to obtain accurate approximate roots. Finally, make a table which displays three sets of roots for this case: those calculated with your original function, those calculated with your modified function, and those calculated with \matlab's built-in \verb$roots$ function.
+\end{parts}
+
+\end{questions}
+
+\end{document}

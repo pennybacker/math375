@@ -1,0 +1,49 @@
+\documentclass[12pt]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+
+\newcommand{\class}{MATH 375}
+\newcommand{\term}{Spring 2015}
+\newcommand{\doctitle}{Homework 3}
+
+\newcommand{\matlab}{{\sc Matlab}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+
+Remember to adequately label all plots and include any \matlab~scripts and functions with your solutions. A clear and complete presentation of your solutions is required for full credit.
+\begin{questions}
+
+\question The roots of the quadratic equation $ax^2+bx+c = 0$ are
+\[x_\pm = \frac{-b \pm \sqrt{b^2-4ac}}{2a} .\]
+We may also approximate these roots using fixed-point iteration by dividing through by $x$ (assuming $x \neq 0$) to get the equivalent equation
+\[ax+b+\frac{c}{x} = 0.\]
+Now, we can rearrange this equation to get the following methods:
+\begin{parts}
+\part Method 1 (Forward Iteration): Consider the sequence
+\[x_0 = \text{initial guess}, \quad x_{k+1} = -\frac{b}{a}-\frac{c}{ax_k}, k = 1,2,3,\dots\]
+\part Method 2 (Backward Iteration): Consider the sequence
+\[x_0 = \text{initial guess}, \quad x_{k+1} = -\frac{c}{b+ax_k}, k = 1,2,3,\dots\]
+\end{parts}
+Write \matlab~functions \verb$forward$ and \verb$backward$ that implement the above iterations to return $r$ which differs from either $x_+$ or $x_-$ by no more than a tolerance \verb$tol$. Your functions should have \verb$(a,b,c,x0,tol)$ as their argument lists and terminate when $|x_{k+1}-x_k| < \text{\texttt{tol}}$. Demonstrate the performance of your functions for the values
+\[x0 = 1,\ a = 1,\ b = c = -1,\ \text{\texttt{tol}} = 10^{-10}.\]
+Note that the two functions will return different approximate roots $r_\text{forward}$ and $r_\text{backward}$. Verify directly that each is within the desired tolerance from $x_\pm$. Which root is found by each method? Does the answer change if you change $x_0$?
+
+\question Use the bisection method and the \matlab~function \verb$fzero$ to compute a positive real number $x$ satisfying $\sinh x = \cos x$. For each method, use a tolerance of $10^{-8}$. List your initial approximation (or interval in the case of bisection) and the number of required iterations. Also print at least nine digits of the approximate roots.
+
+\question Use the bisection method and the \matlab~function \verb$fzero$ to compute all three real numbers $x$ satisfying $5x^2-e^x = 0$. For each of the three roots and each method, use a tolerance of $10^{-8}$. List your initial approximations (or intervals in the case of bisection) and the number of required iterations. Also print at least nine digits of each approximate roots.
+
+\question Sauer, Section 1.2, Exercise 14.
+
+\end{questions}
+
+\end{document}

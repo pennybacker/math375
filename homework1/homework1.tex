@@ -1,0 +1,90 @@
+\documentclass[12pt]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+
+\newcommand{\class}{MATH 375}
+\newcommand{\term}{Spring 2015}
+\newcommand{\doctitle}{Homework 1}
+
+\newcommand{\matlab}{{\sc Matlab}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+
+Remember to adequately label all plots and include any \matlab~scripts and functions with your solutions. A clear and complete presentation of your solutions is required for full credit.
+\begin{questions}
+
+\question Suppose \verb$z = [10 40 50 80 30 70 60 90]$. What does this vector look like after each of the following commands? Do not reinitialize the vector \verb$z$ between commands.
+\begin{parts}
+\part \verb$z(1:2:7) = zeros(1,4)$
+\part \verb$z(7:-2:1) = fliplr(z(1:2:7))$
+\part \verb$z([3 4 8 1]) = []$
+\end{parts}
+
+\question Use the \verb$linspace$ function to create vectors identical to each of the following vectors created with colon notation.
+\begin{parts}
+\part \verb$t = 5:5:30$
+\part \verb$x = -3:3$
+\end{parts}
+
+\question Use colon notation to create vectors identical to each of the following vectors created with the \verb$linspace$ function.
+\begin{parts}
+\part \verb$v = linspace(-2,1,5)$
+\part \verb$r = linspace(6,0,7)$
+\end{parts}
+
+\question Given that \verb$t = 0:0.05:1$ and \verb$y = sin(t)$, write a single-line \matlab\ statement that returns each of the following.
+\begin{parts}
+\part $\displaystyle \sum_{k = 1}^n t_k$ (use the built-in \verb$sum$ function)
+\part $\displaystyle \sum_{k = 1}^n t_k y_k$ (do not use the built-in \verb$sum$ function)
+\part $\displaystyle \sum_{k = 1}^n t_k^2$
+\end{parts}
+\question The Kolmogorov length scale
+\[\eta = \bigg(\frac{\nu^3}{\epsilon}\bigg)^{\frac14}\]
+estimates the smallest scale in a turbulent flow, the scale at which the energy input from nonlinear terms is in balance with viscous energy dissipation. Here $\nu$ is the kinematic viscosity and $\epsilon$ is the energy dissipation. The data available for five turbulent flows are listed in the following table.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{|c|c|}
+	\hline
+	$\nu$ & $\epsilon$ \\ \hline
+	0.035 & 0.0001 \\
+	0.020 & 0.0002 \\
+	0.015 & 0.0010 \\
+	0.030 & 0.0007 \\
+	0.022 & 0.0003 \\ \hline
+\end{tabular}
+\caption{Kinematic viscosity $\nu$ and energy dissipation $\epsilon$ for five turbulent flows.\label{tab:kolmogorov}}
+\end{table}
+
+\begin{parts}
+\part Store $\nu$ and $\epsilon$ as column vectors named \verb$nu$ and \verb$epsilon$ respectively. Using the \verb$sort$ function, sort both column vectors in order of increasing $\nu$.
+\part Write a single-line \matlab\ statement to compute a column vector \verb$eta$ containing the Kolmogorov length based on these parameter values.
+\end{parts}
+
+\question As we will see later in the semester, the derivative $f'(x)$ of a differentiable function $f(x)$ can be approximated by a \emph{finite difference} formula. Two such formulas are the forward difference
+\[f'(x) \approx \frac{f(x+h) - f(x)}{h}\]
+and the centered difference
+\[f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}\]
+where $h$ is a (small) positive real number.
+
+\begin{parts}
+\part Write two \matlab~functions with definitions \verb$fp = fdiff(f,x,h)$ and \\ \verb$fp = cdiff(f,x,h)$ implementing the forward difference formula and the centered difference formula respectively. In both cases, the input \verb$f$ is an arbitrary function passed using the \verb$@$ notation, \verb$x$ is a vector of values at which to approximate the derivative, and \verb$h$ is a positive scalar. The output \verb$fp$ is an approximation to the derivative. Do not use a \verb$for$ loop in your functions.
+\part Use your functions from part (a) to approximate the derivative of $f(x) = 1/(1+x^2)$ on the interval $[-1,1]$. Take \verb$x = linspace(-1,1,100)$ and \verb$h = 1e-4$. Prepare the following plot having two subplots by using the built-in commands \verb$subplot(2,1,1)$ and \verb$subplot(2,1,2)$. The top plot should depict the absolute value of the error between the forward difference approximation and the exact derivative. The bottom plot should depict the absolute value of the error between the centered difference approximation and the exact derivative.
+\part Now, take $f(x) = e^x$ and $h = 10^{-1}, 10^{-2}, \dots, 10^{-9}$. Approximate $f'(0)$ using the two finite difference formulas from part (a) at each value of $h$. The exact value is obviously $f'(0) = 1$. Make a table which lists $h$ in the first column, the forward difference approximation in the second column, the error in the forward difference approximation in the third column, the centered difference approximation in the fourth column, and the error in the centered difference approximation in the fifth column. Report $h$ in scientific notation with the minimum number of displayed digits. Report errors in absolute value using scientific notation, keeping 3 digits past the decimal. Approximations should be reported in fixed-point non-scientific notation with a full field of digits (say 14 past the decimal point).
+\part Plot the errors from part (c) versus $h$ on the same log-log plot. Your plot should include a legend. What do you observe?
+\end{parts}
+
+\end{questions}
+
+\end{document}

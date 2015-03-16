@@ -1,0 +1,57 @@
+\documentclass[12pt]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+
+\usepackage{amsbsy}
+\renewcommand*{\vec}[1]{\boldsymbol{#1}}
+
+\newcommand{\class}{MATH 375}
+\newcommand{\term}{Spring 2015}
+\newcommand{\doctitle}{Homework 5}
+
+\newcommand{\matlab}{{\sc Matlab}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+
+Remember to adequately label all plots and include any \matlab~scripts and functions with your solutions. A clear and complete presentation of your solutions is required for full credit.
+\begin{questions}
+
+\question Sauer, Section 2.1, Exercise 2(c).
+
+\question Sauer, Section 2.1, Exercise 5.
+
+\question Write the following \matlab~functions.
+
+\begin{parts}
+\part \verb$function [L,U] = naive_gauss(A)$ that returns the unit lower triangular matrix $L$ and upper triangular matrix $U$ such that $A = LU$ obtained by Gaussian elimination without partial pivoting.
+\part \verb$function x = utri_solve(U,b)$ that solves the upper triangular system $U\vec{x} = \vec{b}$ using backward substitution.
+\part \verb$function x = ltri_solve(L,b)$ that solves the lower triangular system $L\vec{x} = \vec{b}$ using forward substitution.
+\end{parts}
+
+Use your functions to solve the system from Problem 1. Remember, to use the $LU$ decomposition to solve $A\vec{x} = \vec{b}$, you must first solve $L\vec{y} = \vec{b}$ then solve $U\vec{x} = \vec{y}$.
+
+\question This problem explores the relationship between condition number and the volume of a random parallelepiped in 4-dimensional space whose sides are unit vectors. Let $\vec{a}_1$, $\vec{a}_2$, $\vec{a}_3$, $\vec{a}_4$ be vectors which emanate from a given vertex of the parallelepiped and describe its sides. By a well-known result from geometry, the volume of the parallelepiped is then $|\det(A)|$, where $A$ is the matrix having $\vec{a}_1$, $\vec{a}_2$, $\vec{a}_3$, $\vec{a}_4$ as its columns. Your program for this problem should do the following.
+
+\begin{parts}
+\part Generate 4 random column vectors of size 4-by-1 by viewing them as the columns of a 4-by-4 random matrix \verb$A = rand(4)$.
+\part Normalize the columns using the command \verb$A = A*diag(1./sqrt(sum(A.*A)))$. Provide some comments to explain what this operation does.
+\part Compute the volume of the parallelepiped defined by the normalized vectors. Your program must use the $LU$ factorization for computing the determinant (i.e. do not use the command \verb$det(A)$).
+\part Compute the condition number $\kappa(A)$ with the command \verb$cond(A)$.
+\part Repeat the process 1000 times, and produce a scatter plot of $|\det(A)|$ versus $1/\kappa(A)$.
+\end{parts}
+
+What are the maximum and minimum values found for $|\det(A)|$? What is the condition number corresponding to each of these values? How can you explain the extreme values of the condition number and the corresponding values of the determinant?
+
+\end{questions}
+
+\end{document}
