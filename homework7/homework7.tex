@@ -1,0 +1,63 @@
+\documentclass[12pt]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\newcommand{\class}{MATH 375}
+\newcommand{\term}{Spring 2015}
+\newcommand{\doctitle}{Homework 7}
+
+\newcommand{\matlab}{{\sc Matlab}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\renewcommand*{\vec}[1]{\boldsymbol{#1}}
+
+\newcommand*\circled[1]{\textcircled{\scriptsize{#1}}}
+
+\begin{document}
+
+Remember to adequately label all plots and include any \matlab~scripts and functions with your solutions. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question \emph{Polynomial Interpolation}. By hand, find the unique polynomial $P(x)$ having degree at most two that passes through the three points $(-1,1)$, $(2,3)$, $(3,0)$ using each of the following three approaches.
+
+\begin{parts}
+\part Vandermonde matrix.
+\part Lagrange's interpolating polynomials.
+\part Newton's divided differences.
+\end{parts}
+
+Verify that the polynomial you obtain is the same in (a)--(c).
+
+\question \emph{Lagrange's Interpolating Polynomials}.
+\begin{parts}
+\part Recall that the unique polynomial of degree $m \leq n-1$ interpolating $n$ points $x_1 < x_2 < \dots < x_n$ can be written as
+\[P_m(x) = \sum_{i = 1}^n y_i\,\ell_i(x) \quad\text{where}\quad \ell_i(x) = \prod_{\substack{k = 1 \\ k \neq i}}^{n} \frac{x-x_k}{x_i-x_k} .\]
+Write a function with the declaration \verb$function yy = lagrange(x,y,xx)$ which evaluates the interpolating polynomial using the Lagrange polynomials. Its inputs are \verb$x$ and \verb$y$, vectors containing the $x$- and $y$-coordinates of the data to be interpolated, and a vector \verb$xx$ of points at which to evaluate the polynomial. Its output \verb$yy$ is a vector containing the values of the polynomial.
+\part Demonstrate empirically that the computational cost of this method of evaluating the interpolating polynomial is $\mathcal{O}(n^2)$ for large values of $n$. To do this, you might interpolate $f(x) = \sin(x)$ at $n$ equally spaced points on the interval $-\pi \leq x \leq \pi$, where you take $n = \{10, 20, 50, 100, 200, 500, 1000, \dots\}$. Measure the time that it takes to evaluate the polynomial using the functions \verb$tic$ and \verb$toc$, averaging over many evaluations. Then plot your results on log-log axes. Explain in a few sentences how your data verify that the cost is $\mathcal{O}(n^2)$.
+\end{parts}
+
+\question \emph{Newton's Divided Differences}.
+\begin{parts}
+\part Recall that the unique polynomial of degree $m \leq n-1$ interpolating $n$ points $x_1 < x_2 < \dots < x_n$ can be written as
+\[P_m(x) = \sum_{i = 1}^n c_i\,p_i(x) \quad\text{where}\quad p_i(x) = \prod_{k = 1}^{i-1} (x-x_k)\]
+and the coefficients are given by the divided differences $c_i = f[x_1,x_2,\dots,x_i]$.
+Write a function with the declaration \verb$function c = newton_coef(x,y)$ which computes the coefficients of the Newton polynomials. Its inputs \verb$x$ and \verb$y$ are vectors containing the $x$- and $y$-coordinates of the data to be interpolated and its output \verb$c$ is a vector containing the coefficients $(c_1,c_2,\dots,c_n)$.
+\part Write a function with the declaration \verb$function yy = newton_eval(c,x,xx)$ which uses the nested formula
+\[P(x) = c_1 + (x-x_1)\big[c_2 + (x-x_2)\big[c_3 + (x-x_3)\big[c_4 + \dots + (x-x_{n-1})\,c_n\big]\big]\big]\]
+to evaluate the interpolating polynomial. Its inputs are the vector \verb$c$ of coefficients, a vector \verb$x$ containing the $x$-coordinates of the data points, and a vector \verb$xx$ of points at which to evaluate the polynomial. Its output \verb$yy$ is a vector containing the values of the polynomial.
+\part Use the functions you have written to evaluate the polynomial that interpolates $f(x) = \sin(x)$ at 5 equally spaced points on the interval $-\pi \leq x \leq \pi$. Plot the function and its interpolating polynomial on this interval. Both of these should be smooth functions. Also, plot the interpolation error on this interval.
+\part Analytically determine an upper bound for the interpolation error at $x = \pi/4$. Does this match your calculations?
+\end{parts}
+
+\end{questions}
+
+\end{document}
