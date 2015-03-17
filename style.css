@@ -1,9 +1,0 @@
-  h1 { margin-top: 0; }
-  table { border-collapse: collapse; width: 100%; }
-  td, th { padding: 1ex; vertical-align: top; text-align: left; }
-  th:nth-child(1) { white-space: nowrap; padding-right: 1em; min-width: 8em; }
-  td:nth-child(2) { width: 100%; }
-  td:nth-child(3) { text-align: right; white-space: nowrap; padding-left: 1em; }
-  tr:nth-child(odd)  { background-color: #dddddd; }
-  tr:nth-child(even) { background-color: #f7f7f7; }
-  img { border: solid; width: 150px; }
