@@ -28,12 +28,12 @@ Remember to adequately label all plots and include any \matlab~scripts and funct
 \begin{questions}
 
 \question \emph{QR Factorization and Least Squares}.
-Given an $n \times m$ matrix $A$ with $n \geq m$, you can decompose $A$ into an $n \times n$ orthogonal matrix $Q$ and an $n \times m$ upper triangular matrix $R$ as $A = QR$.
+Given an $n \times m$ matrix $A$ with $n \geq m$, you can decompose $A$ into an $n \times m$ matrix $Q$ with orthonormal columns and an $m \times m$ upper triangular matrix $R$ as $A = QR$. This is called the \emph{thin} or \emph{economy} $QR$ factorization.
 \begin{parts}
-\part By hand, compute the factors $Q$ and $R$ for the following matrix:
+\part By hand, compute the thin $QR$ factorization the following matrix:
 \[A = \begin{bmatrix} 1 & 1 \\ 0 & 1 \\ 1 & 1 \end{bmatrix}\]
 You can use your result to test the function \verb$gram_schmidt$ that you implement below.
-\part Write a function with the declaration \verb$function [Q,R] = gram_schmidt(A)$ which computes the QR factorization of the given matrix using Gram-Schmidt orthogonalization. Its input \verb$A$ is an $n \times m$ matrix $A$ with $n \geq m$. Its outputs \verb$Q$ and \verb$R$ are the $n \times n$ matrix Q and the $n \times m$ matrix $R$ with $A = QR$.
+\part Write a function with the declaration \verb$function [Q,R] = gram_schmidt(A)$ which computes the thin $QR$ factorization of the given matrix using Gram-Schmidt orthogonalization. Its input \verb$A$ is an $n \times m$ matrix $A$ with $n \geq m$. Its outputs \verb$Q$ and \verb$R$ are the $n \times m$ matrix Q and the $m \times m$ matrix $R$ with $A = QR$.
 \part The daily high temperature in Albuquerque is roughly modeled by a function of the form
 \[y(x) = a_1 + a_2 \cos(2\pi x/12) + a_3 \sin(2\pi x/12) ,\]
 where $x$ is measured in months since January and $y$ is measured in degrees Fahrenheit. Data from the National Weather Service, averaged over the years 1914 to 2005, give the following average high temperatures:
@@ -48,32 +48,25 @@ $y$ & 47.2 & 53.2 & 60.6 & 70.0 & 79.4 & 89.3 & 91.7 & 88.9 & 82.4 & 71.0 & 56.9
 \vspace{1ex}
 
 What is the overdetermined system of equations that relates the model to the data?
-\part Use the $QR$ factorization given by your function \verb$gram_schmidt$ to solve the least squares problem associated with this overdetermined system for the coefficients $a_1$, $a_2$, and $a_3$. Plot the data and the fitted model on the same axes. What do you predict will be the high temperature on April 15 ($x = 3.5$) using this fit?
+\part Use the thin $QR$ factorization given by your function \verb$gram_schmidt$ to solve the least squares problem associated with this overdetermined system for the coefficients $a_1$, $a_2$, and $a_3$. Plot the data and the fitted model on the same axes. What do you predict will be the high temperature on April 15 ($x = 3.5$) using this fit?
 \end{parts}
 
-\question \emph{Functions as Vectors}. The QR factorization has an analog for orthonormal expansions of functions rather than vectors. We will consider the space $L^2[-1,1]$. This is a vector space of real-valued functions on $[-1,1]$. The dot product of functions $f$ and $g$ now takes the form
-\[f \cdot g = \int_{-1}^1 f(x) g(x)\,dx .\] 
-
+\question \emph{Functions as Vectors}. The $QR$ factorization has an analog for orthonormal expansions of functions rather than vectors. We will consider the space $L^2[-1,1]$. This is a vector space of real-valued functions on $[-1,1]$. The dot product of functions $f$ and $g$ now takes the form
+\[f \cdot g = \int_{-1}^1 f(x) g(x)\,dx ,\]
+and the norm of a function $f$ takes the form
+\[\|f\|^2 = f \cdot f = \int_{-1}^1 \big(f(x)\big)^2\,dx.\] 
 Consider the ``matrix'' whose ``columns'' are the monomials $x^j$:
 \[A = \left[ \begin{array}{c|c|c|c|c} & & & & \\ & & & & \\ 1 & x & x^2 & \dots & x^{n-1} \\ & & & & \\ & & & & \end{array} \right] .\]
-
 The ``continuous $QR$ factorization'' of $A$ takes the form
 \[A = QR = \left[ \begin{array}{c|c|c|c|c} & & & & \\ & & & & \\ q_0(x) & q_1(x) & q_2(x) & \dots & q_{n-1}(x) \\ & & & & \\ & & & & \end{array} \right] \left[ \begin{array}{c c c c} r_{11} & r_{12} & \dots & r_{1n} \\ & r_{22} & \dots & r_{2n} \\ & & \ddots & \vdots \\ & & & r_{nn} \end{array} \right] \]
 where the ``columns'' of $Q$ are orthonormal with respect to the dot product:
 \[q_i \cdot q_j = \int_{-1}^1 q_i(x) q_j(x)\,dx = \begin{cases} 1 & \text{if $i = j$.} \\ 0 & \text{if $i \neq j$.} \end{cases} \]
 
 \begin{parts}
-\part Using the Gram-Schmidt algorithm, find by hand the functions $q_0(1)$ through $q_3(x)$. Plot these functions on the same set of axes, making sure to give your plot an appropriate legend.
-\part Construct a discrete approximation to the ``matrix'' $A$ by setting
-
-\quad \verb$x = linspace(-1,1,100)$
-
-and
-
-\quad \verb$A = [x.^0,x.^1,x.^2,x.^3]$.\\
-
-Then find the thin $QR$ factorization of $A$ by running
-\verb$[Q,R] = qr(A,0)$. Plot the columns of $Q$ on the same set of axes, making sure to give your plot an appropriate legend. Your plot should resemble that from the previous part.
+\part Using the classical Gram-Schmidt algorithm, find by hand the functions $q_0(x)$ through $q_3(x)$. Plot these functions on the same set of axes, making sure to give your plot an appropriate legend.
+\part Construct a discrete approximation to the ``matrix'' $A$ by setting \\ \verb$x = linspace(-1,1,100)$ and
+\verb$A = [x'.^0,x'.^1,x'.^2,x'.^3]$.
+Find the thin $QR$ factorization of $A$ using your function \verb$gram_schmidt$ from the previous problem. Plot the columns of $Q$ on the same set of axes, making sure to give your plot an appropriate legend. Your plot should resemble that from the previous part.
 \part Using what you know about linear algebra, explain the relationship between the calculations that you performed in this problem.
 \end{parts}
 
