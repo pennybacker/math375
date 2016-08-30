@@ -1,5 +1,3 @@
-# mac garbage
-.DS_Store
 # latex build files
 *.aux
 *.log
@@ -9,7 +7,6 @@
 *-eps-converted-to.pdf
 *.synctex.gz(busy)
 *.toc
-*.bbl
 *.blg
 *.spl
 *.fff
