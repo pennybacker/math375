@@ -38,7 +38,9 @@ end
 
 fc = f(c);
 
-if fa*fc < 0
+if fc == 0
+    r = c;
+elseif fa*fc < 0
     r = bisectguts(f,a,c,tol,fa,fc);
 else
     r = bisectguts(f,c,b,tol,fc,fb);
