@@ -30,7 +30,7 @@ The term in brackets is the modification of the Newton-Raphson formula.
 
 \begin{parts}
 \part Using the provided \verb$newton$ function as a starting point, write a function \verb$halley$ which implements this iteration. You will need an additional input \verb$fpp$ for a function handle to the second derivative $f''(x)$. Include the code for your function.
-\part Using $f(x) = x^2-5$ and $x_0 = 2$, creating a table of values which demonstrates that Halley's method exhibits cubic convergence at simple roots of $f(x)$. The first column contains the iteration number $i$. The second column contains the approximation $x_i$. The third column contains the absolute error $\varepsilon_i$. The fourth column contains the error ratio $\varepsilon_{i+1} / \varepsilon_i^3$. All numerical values should be printed to at least 10 digits. Explain briefly how your data demonstrate cubic convergence.
+\part Using $f(x) = x^2-5$ and $x_0 = 2$, creating a table of values which demonstrates that Halley's method exhibits cubic convergence at simple roots of $f(x)$. The first column contains the iteration number $i$. The second column contains the error ratio $\varepsilon_{i+1} / \varepsilon_i^2$. The third column contains the error ratio $\varepsilon_{i+1} / \varepsilon_i^3$. The fourth column contains the error ratio $\varepsilon_{i+1} / \varepsilon_i^4$. Note that the method should converge after just a few iterations. All numerical values should be printed to at least 10 digits. Explain briefly how your data demonstrate cubic convergence.
 \part Discuss the trade-offs associated with using this method instead of Newton's method. That is, why would you want to use one instead the other and vice versa?
 \end{parts}
 
