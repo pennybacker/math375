@@ -1,0 +1,63 @@
+\documentclass[12pt]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage[numbered]{matlab-prettifier}
+
+\renewcommand*{\vec}[1]{\boldsymbol{#1}}
+
+\newcommand{\class}{MATH 375}
+\newcommand{\term}{Fall 2016}
+\newcommand{\doctitle}{Homework 5}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+%\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+
+Remember to adequately label all plots and include any requested code listings with your solutions. \emph{Only include those scripts and functions which are requested}. Show your work for problems that you do by hand. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question Sauer, Section 2.2, Exercise 2.
+
+\question An important quantity associated with a matrix is the determinant, and one way to compute the determinant of a matrix is using Gaussian elimination.
+
+\begin{parts}
+\part It's not too hard to show that adding or subtracting a multiple of one row from another doesn't change the determinant. This means that the determinant is invariant under Gaussian elimination without pivoting. If no zero pivots are encountered, the result is an upper triangular matrix whose determinant is the product of its diagonal entries.
+
+Based on the provided \verb$gausselim$ function, write a function \verb$d = gaussdet(a)$ which computes the determinant in this way. Include a listing of your function.
+
+\part Another (perhaps more familiar) way to compute the determinant of a matrix is using the cofactor expansion formula. An implementation of this method is given in the provided \verb$cofactor$ function.
+
+Create a plot comparing the runtimes of both algorithms for matrices of various sizes. You should notice a difference so vast that it may lead you to question why we teach cofactor expansion in the first place.
+
+\part Have a look at the documentation for the built-in Matlab function \verb$det$. What method is Matlab using to compute the determinant? What are some of the potential limitations of this approach? How is it recommended to compute the determinant of the inverse of a matrix? Why? What might lead Matlab to compute a determinant very far from zero for a singular matrix?
+\end{parts}
+
+\question Sauer, Section 2.1, Exercises 2 and 4.
+
+\question Prove that $\operatorname{cond}(A) \geq 1$ for any nonsingular $n \times n$ matrix $A$. What does this tell you about the error magnification factor when solving a linear system of equations? \emph{Hint}: You know that $A A^{-1} = I$.
+
+\question This problem explores the relationship between condition number and the volume of a random parallelepiped in 4-dimensional space whose sides are unit vectors. Let $\vec{a}_1$, $\vec{a}_2$, $\vec{a}_3$, $\vec{a}_4$ be vectors which emanate from a given vertex of the parallelepiped and describe its sides. By a well-known result from geometry, the volume of the parallelepiped is then $|\det(A)|$, where $A$ is the matrix having $\vec{a}_1$, $\vec{a}_2$, $\vec{a}_3$, $\vec{a}_4$ as its columns. Your program for this problem should do the following.
+
+\begin{parts}
+\part Generate 4 random column vectors of size 4-by-1 by viewing them as the columns of a 4-by-4 random matrix \verb$A = rand(4)$.
+\part Normalize the columns using the command \verb$A = A*diag(1./sqrt(sum(A.*A)))$.
+\part Compute the volume of the parallelepiped defined by the normalized vectors.
+\part Compute the condition number of $A$ with the command \verb$cond(A)$.
+\part Repeat the process 1000 times, producing a scatter plot of $|\det(A)|$ versus $1/\!\operatorname{cond}(A)$.
+\end{parts}
+
+Explain in detail what the command in step (b) does. You should provide your scatter plot, but not the code for generating it. Briefly discuss your results. What are the maximum and minimum values found for $|\det(A)|$? What is the condition number corresponding to each of these values? How can you explain the extreme values of the condition number and the corresponding values of the determinant?
+
+
+\end{questions}
+
+\end{document}
