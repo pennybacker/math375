@@ -1,0 +1,58 @@
+\documentclass[12pt,answers]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage[numbered]{matlab-prettifier}
+
+\renewcommand*{\vec}[1]{\boldsymbol{#1}}
+
+\newcommand{\class}{MATH 375}
+\newcommand{\term}{Fall 2016}
+\newcommand{\doctitle}{Homework 7}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+%\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+
+Remember to adequately label all plots and include any requested code listings with your solutions. \emph{Only include those scripts and functions which are requested}. Show your work for problems that you do by hand. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question \emph{Polynomial Interpolation}. By hand, find the unique polynomial $P(x)$ having degree at most two that passes through the three points $(-1,1)$, $(2,3)$, $(3,0)$ using each of the following three approaches.
+
+\begin{parts}
+\part Vandermonde matrix.
+\part Lagrange's interpolating polynomials.
+\part Newton's divided differences.
+\end{parts}
+
+Verify that the polynomial you obtain is the same in (a)--(c).
+
+\question \emph{Change of Basis}. As we have seen, each approach to polynomial interpolation yields an expression for the interpolating polynomial $P(x)$ as a linear combination of basis functions: specifically $\{1,x,x^2,\dots,x^{n-1}\}$ for the Vandermonde matrix approach and $\{\ell_1(x),\ell_2(x),\dots,\ell_n(x)\}$ for the Lagrange interpolating polynomial approach.
+
+Find a linear transformation which can be used to change between these bases. That is, find a matrix $M$ so that
+\[M \begin{bmatrix} \ell_1(x) \\ \ell_2(x) \\ \vdots \\ \ell_n(x) \end{bmatrix} = \begin{bmatrix} 1 \\ x \\ \vdots \\ x^{n-1} \end{bmatrix}.\]
+
+\question \emph{Newton's Divided Differences}. You can use the included script \verb$homework7_test.m$ to test the functions that you write for this problem.
+\begin{parts}
+\part Recall that the unique polynomial of degree at most $n-1$ interpolating $n$ points $x_1 < x_2 < \dots < x_n$ can be written as
+\[P(x) = \sum_{i = 1}^n c_i\,p_i(x) \quad\text{where}\quad p_i(x) = \prod_{k = 1}^{i-1} (x-x_k)\]
+and the coefficients are given by the divided differences $c_i = f[x_1,x_2,\dots,x_i]$.
+Write a function with the declaration \verb$function c = newton_coef(x,y)$ which computes the coefficients of the Newton polynomials. Its inputs \verb$x$ and \verb$y$ are vectors containing the $x$- and $y$-coordinates of the data to be interpolated and its output \verb$c$ is a vector containing the coefficients $(c_1,c_2,\dots,c_n)$. Include a listing of your function.
+\part Write a function with the declaration \verb$function yy = newton_eval(c,x,xx)$ which uses the nested formula
+\[P(x) = c_1 + (x-x_1)\big[c_2 + (x-x_2)\big[c_3 + (x-x_3)\big[c_4 + \dots + (x-x_{n-1})\,c_n\big]\big]\big]\]
+to evaluate the interpolating polynomial. Its inputs are the vector \verb$c$ of coefficients, a vector \verb$x$ containing the $x$-coordinates of the data points, and a vector \verb$xx$ of points at which to evaluate the polynomial. Its output \verb$yy$ is a vector containing the values of the polynomial. Include a listing of your function.
+\part Use the functions you have written to evaluate the polynomial that interpolates $f(x) = \sin(x)$ at 5 equally spaced points on the interval $-\pi \leq x \leq \pi$. Plot the function and its interpolating polynomial on this interval. Both of these should be smooth functions. Also, plot the interpolation error on this interval.
+\part Analytically determine an upper bound for the interpolation error at $x = \pi/4$. Does this match your calculations?
+\end{parts}
+
+\end{questions}
+
+\end{document}
