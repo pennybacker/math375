@@ -1,0 +1,63 @@
+\documentclass[12pt,answers]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage[numbered]{matlab-prettifier}
+
+\renewcommand*{\vec}[1]{\boldsymbol{#1}}
+
+\newcommand{\class}{MATH 375}
+\newcommand{\term}{Fall 2016}
+\newcommand{\doctitle}{Homework 8}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+%\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+
+Remember to adequately label all plots and include any requested code listings with your solutions. \emph{Only include those scripts and functions which are requested}. Show your work for problems that you do by hand. A clear and complete presentation of your solutions is required for full credit. You can use the included script \verb$hw8_test.m$ to test your functions in problems 2 and 3.
+
+\begin{questions}
+
+\question \emph{Piecewise Linear Interpolation}.
+Suppose that you are given a set of $n$ points $(x_i,y_i)$ for $i = 1,2,\dots,n$ with $x_1 < x_2 < \dots < x_n$. Then the linear interpolating function on each interval $x_i \leq x \leq x_{i+1}$ can be written in the form
+\[\mathcal{L}(x) = y_i + a_i\,(x-x_i)\]
+for some constants $a_1, a_2, \dots, a_{n-1}$. If we require that $\mathcal{L}(x_i) = y_i$ for $i = 1,2,\dots,n$ and that $\mathcal{L}(x)$ is continuous, determine the values of $a_1, a_2, \dots, a_{n-1}$ in terms of the given points.
+
+\question \emph{Piecewise Bilinear Interpolation}.
+The idea of linear interpolation can be naturally extended to any number of independent variables. Let us consider the case of two. Suppose that you are given a set of $m\times n$ points $(x_j,y_i,z_{ij})$ for $i = 1,2,\dots,m$ and $j = 1,2,\dots,n$ with $x_1 < x_2 < \dots < x_n$ and $y_1 < y_2 < \dots < y_m$. Then the bilinear interpolating function on $x_j \leq x \leq x_{j+1}$ and $y_i \leq x \leq y_{i+1}$ can be written in the form
+\[\mathcal{B}(x,y) = z_{ij} + a_{ij}\,(x-x_j) + b_{ij}\,(y-y_i) + c_{ij}\,(x-x_j)(y-y_i)\]
+where
+\[a_{ij} = \frac{z_{i(j+1)}-z_{ij}}{x_{j+1}-x_j}, \quad b_{ij} = \frac{z_{(i+1)j}-z_{ij}}{y_{i+1}-y_i}, \quad c_{ij} = \frac{z_{ij}+z_{(i+1)(j+1)}-z_{i(j+1)}-z_{(i+1)j}}{(x_{j+1}-x_j)(y_{i+1}-y_i)}\]
+for $i = 1,2,\dots,m-1$ and $j = 1,2,\dots,n-1$. Notice that the interpolating function is nonlinear, but it becomes linear if either independent variable is fixed.
+
+\begin{parts}
+\part Verify that $\mathcal{B}(x_j,y_i) = z_{ij}$ for $i = 1,2,\dots,m$ and $j = 1,2,\dots,n$ and that $\mathcal{B}(x,y)$ is continuous. Note that you will need to check the entire boundary of the region $x_j \leq x \leq x_{j+1}$ and $y_i \leq x \leq y_{i+1}$ for continuity.
+
+\part Write a function with the declaration \verb$function [a,b,c] = bilinear_coef(x,y,z)$ which computes the coefficients in the bilinear interpolation of the given data. Its input \verb$x$ is a vector of length $n$ containing the $x_i$ values, \verb$y$ is a vector of length $m$ containing the $y_j$ values, and \verb$z$ is an $m\times n$ matrix containing the $z_{ij}$ values. Its outputs \verb$a$, \verb$b$, and \verb$c$ are $m-1 \times n-1$ matrices containing the $a_{ij}$, $b_{ij}$, and $c_{ij}$ values respectively. Include a listing of your function.
+\part Write a function with the declaration \verb$function zi = bilinear_eval(x,y,z,a,b,c,xi,yi)$ which evaluates the bilinear interpolation of the given data using the pre-computed coefficients. Its inputs \verb$x$, \verb$y$, \verb$z$, \verb$a$, \verb$b$, and \verb$c$ are as before. Its remaining inputs \verb$xi$ and \verb$yi$ are vectors containing points at which to evaluate the bilinear interpolation. Its output \verb$zi$ is a vector containing the values of the bilinear interpolation. Include a listing of your function.
+\part The file \verb$bilinear.mat$ contains elevation data for the City of Albuquerque. Longitude values (in degrees) are contained in the vector \verb$x$, latitude values (in degrees) are contained in the vector \verb$y$, and elevation values (in feet) are contained in the matrix \verb$z$. Plot this data using the \verb$pcolor$ command and add a colorbar with the \verb$colorbar$ command. Use the interpolation routines that you have written to etimate the elevation of the New Mexico Museum of Natural History and Science, which is located at $-106.6685$ degrees longitude and $35.0978$ degrees latitude.
+\end{parts}
+
+\question \emph{Cubic Spline Interpolation}.
+Suppose that you are given a set of $n$ points $(x_i,y_i)$ for $i = 1,2,\dots,n$. Then the cubic spline interpolating function on each interval $x_i \leq x \leq x_{i+1}$ can be written in the form
+\[\mathcal{S}(x) = y_i + b_i\,(x-x_i) + c_i\,(x-x_i)^2 + d_i\,(x-x_i)^3\]
+for some constants $b_i$, $c_i$, and $d_i$ with $i = 1,2,\dots,n-1$. We have found that $c_1,c_2,\dots,c_n$ (having $c_n$ defined appropriately) satisfy an $n \times n$ system of linear equations and that $b_1,b_2,\dots,b_{n-1}$ and $d_1,d_2,\dots,d_{n-1}$ can be written in terms of the $c_i$ values.
+\begin{parts}
+\part Write a function with the declaration \verb$function [b,c,d] = spline_coef(x,y)$ which computes the coefficients in the cubic spline interpolation of the given data subject to the natural boundary conditions $\mathcal{S}''(x_1) = \mathcal{S}''(x_n) = 0$. Its input \verb$x$ is a vector of length $n$ containing the $x_i$ values, and \verb$y$ is a vector of length $n$ containing the $y_i$ values. Its outputs \verb$b$, \verb$c$, and \verb$d$ are vectors of length $n-1$ containing the $b_i$, $c_i$, and $d_i$ values respectively. Include a listing of your function.
+\part Write a function with the declaration \verb$function yi = spline_eval(x,y,b,c,d,xi)$ which evaluates the bilinear interpolation of the given data using the pre-computed coefficients. Its inputs \verb$x$, \verb$y$, \verb$b$, \verb$c$, and \verb$d$ are as before. Its remaining input \verb$xi$ is a vector containing points at which to evaluate the cubic spline. Its output \verb$yi$ is a vector containing the values of the cubic spline. Include a listing of your function.
+\part Use the interpolation routines that you have written to interpolate the function
+\[f(x) = \frac{1}{1+25x^2}\]
+sampled at $n$ equally spaced points on the interval $-1 \leq x \leq 1$. Take $n = 5, 11, 21$ and compute the interpolating spline $\mathcal{S}(x)$ and the error $\varepsilon(x) = |\mathcal{S}(x)-f(x)|$ at a large number (say 1000) equally spaced points. Plot $\mathcal{S}(x)$ and $\varepsilon(x)$ on separate axes, placing the three values of $n$ on each plot with an appropriate legend. Does the interpolation accuracy increase along with $n$? How does this compare with the accuracy of non-piecewise interpolation?
+\end{parts}
+
+
+\end{questions}
+
+\end{document}
