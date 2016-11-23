@@ -26,12 +26,12 @@ Remember to adequately label all plots and include any requested code listings w
 \begin{questions}
 
 \question \emph{QR Factorization and Least Squares}.
-Given an $n \times m$ matrix $A$ with $n \geq m$, you can decompose $A$ into an $n \times n$ orthogonal matrix $Q$ and an $n \times m$ upper triangular matrix $R$ as $A = QR$.
+Given an $n \times m$ matrix $A$ with $n \geq m$, you can decompose $A$ into an $n \times m$ matrix $Q_1$ with orthonormal columns and an $m \times m$ upper triangular matrix $R$ as $A = Q_1 R$. We called this the thin $QR$ factorization.
 \begin{parts}
-\part By hand, compute the factors $Q$ and $R$ for the following matrix:
+\part By hand, compute the factors $Q_1$ and $R$ for the following matrix:
 \[A = \begin{bmatrix} 1 & 1 \\ 0 & 1 \\ 1 & 1 \end{bmatrix}\]
 You can use your result to test the function \verb$gram_schmidt$ that you implement below.
-\part Write a function with the declaration \verb$function [Q,R] = gram_schmidt(A)$ which computes the QR factorization of the given matrix using Gram-Schmidt orthogonalization. Its input \verb$A$ is an $n \times m$ matrix $A$ with $n \geq m$. Its outputs \verb$Q$ and \verb$R$ are the $n \times n$ matrix Q and the $n \times m$ matrix $R$ with $A = QR$.
+\part Write a function with the declaration \verb$function [Q,R] = gram_schmidt(A)$ which computes the thin $QR$ factorization of the given matrix using Gram-Schmidt orthogonalization. Its input \verb$A$ is an $n \times m$ matrix $A$ with $n \geq m$. Its outputs \verb$Q$ and \verb$R$ are the $n \times m$ matrix $Q_1$ and the $m \times m$ matrix $R$ with $A = Q_1R$ respectively.
 \part The daily high temperature in Albuquerque is roughly modeled by a function of the form
 \[y(x) = a_1 + a_2 \cos(2\pi x/12) + a_3 \sin(2\pi x/12) ,\]
 where $x$ is measured in months since January and $y$ is measured in degrees Fahrenheit. Data from the National Weather Service, averaged over the years 1914 to 2005, give the following average high temperatures:
@@ -46,7 +46,7 @@ $y$ & 47.2 & 53.2 & 60.6 & 70.0 & 79.4 & 89.3 & 91.7 & 88.9 & 82.4 & 71.0 & 56.9
 \vspace{1ex}
 
 What is the overdetermined system of equations that relates the model to the data?
-\part Use the QR factorization given by your function \verb$gram_schmidt$ to solve the least squares problem associated with this overdetermined system for the coefficients $a_1$, $a_2$, and $a_3$. Plot the data and the fitted model on the same axes. What do you predict will be the high temperature on April 15 ($x = 3.5$) using this fit?
+\part Use the thin $QR$ factorization given by your function \verb$gram_schmidt$ to solve the least squares problem associated with this overdetermined system for the coefficients $a_1$, $a_2$, and $a_3$. Plot the data and the fitted model on the same axes. What do you predict will be the high temperature on April 15 ($x = 3.5$) using this fit?
 \end{parts}
 
 \question \emph{Numerical Differentiation}.
