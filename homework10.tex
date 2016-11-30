@@ -1,0 +1,58 @@
+\documentclass[12pt]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage[numbered]{matlab-prettifier}
+
+\renewcommand*{\vec}[1]{\boldsymbol{#1}}
+
+\newcommand{\class}{MATH 375}
+\newcommand{\term}{Fall 2016}
+\newcommand{\doctitle}{Homework 10}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+%\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+
+Remember to adequately label all plots and include any requested code listings with your solutions. \emph{Only include those scripts and functions which are requested}. Show your work for problems that you do by hand. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question \emph{Initial Value Problems}. This homework is intended to demonstrate that there is a difference between good and not so good numerical methods for solving initial value problems.
+
+Consider the second order IVP for the function z(t) given by
+\[z'' + 0.05\,z' + z^3 = 7.5 \cos(t), \quad z(0) = 0,\quad z'(0) = 1.\]
+Your assignment is to compute $z(70)$ as accurately as your computer allows.
+
+\begin{parts}
+\part By introducing the new variables $u_1 = z$ and $u_2 = z'$, rewrite the IVP as a system $\vec{u}' = f(t, \vec{u}(t))$, where $\vec{u} = (u_1, u_2)$.
+\part Try the following two methods, with a variety of step sizes $h$:
+\begin{itemize}
+\item Euler's Method: \[\vec{u}_{n+1} = \vec{u}_n + h\,f(t_n,\vec{u}_n).\]
+\item Fourth Order Runge-Kutta:
+\begin{align*}
+\vec{k}_1 &= \vec{f}(t_n,\vec{u}_n),\\
+\vec{k}_2 &= \vec{f}(t_n+{\textstyle\frac{h}{2}}, \vec{u}_n + {\textstyle\frac{h}{2}}\,\vec{k}_1), \\
+\vec{k}_3 &= \vec{f}(t_n+{\textstyle\frac{h}{2}}, \vec{u}_n + {\textstyle\frac{h}{2}}\,\vec{k}_2), \\
+\vec{k}_4 &= \vec{f}(t_n+h, \vec{u}_n + h\,\vec{k}_3), \\
+\vec{u}_{n+1} &= \vec{u}_n + {\textstyle\frac{h}{6}}(\vec{k}_1+2\vec{k}_2+2\vec{k}_3+\vec{k}_4).
+\end{align*}
+\end{itemize}
+Use the values
+\[u_1^{\mathrm{ex}}(70) = 1.582857756103056,\quad u_2^{\mathrm{ex}}(70) = -2.835763853877514\]
+as ``exact'' and plot the mean-square error $\varepsilon = \sqrt{(u_1-u_1^\mathrm{ex})^2 + (u_2-u_2^\mathrm{ex})^2}$ at $t = 70$ as a function of $h$.
+\part If $h$ is small enough, the error is expected to follow a power law $\varepsilon \approx ch^p$. Determine $c$ and $p$ from your plot and estimate the number of time steps required to reach $\varepsilon < 10^{-5}$ with Euler's method. Is your computer fast enough? Discuss your results.
+\end{parts}
+
+\emph{Note}: Unless you take $h$ small enough, neither of these two methods will be stable. To be on the safe side (inside the stability region), take $h < 8.75 \times 10^{-3}$ for Euler and $h < 0.35$ for Runge-Kutta.
+
+\end{questions}
+
+\end{document}
