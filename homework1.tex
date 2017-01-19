@@ -1,0 +1,67 @@
+\documentclass[12pt,fleqn]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\newcommand{\class}{MATH/CS 375}
+\newcommand{\term}{Spring 2017}
+\newcommand{\doctitle}{Homework 1}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\fl}{\ensuremath{\operatorname{fl}}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\begin{document}
+
+\begin{questions}
+
+\question (Sauer \S0.2, \#4) Convert the following base 10 numbers to binary. Use overbar notation for nonterminating binary numbers.
+\begin{parts}
+\part 11.25
+\part 2/3
+\part 3/5
+\part 3.2
+\part 30.6
+\part 99.9
+\end{parts}
+
+\question (Sauer \S0.2, \#8) Convert the following binary numbers to base 10.
+\begin{parts}
+\part 11011
+\part 110111.001
+\part $111.\overline{001}$
+\part $1010.\overline{01}$
+\part $10111.1\overline{0101}$
+\part $1111.010\overline{001}$
+\end{parts}
+
+\question (Sauer \S0.3, \#2) Convert the following base 10 numbers to binary and express each as a floating point number $\fl(x)$ by using the Rounding to Nearest Rule.
+\begin{parts}
+\part 9.5
+\part 9.6
+\part 100.2
+\part 44/7
+\end{parts}
+
+\question (Sauer \S0.3, \#4) Find the largest integer $k$ for which $\fl(19 + 2^{-k}) > \fl(19)$ in double precision floating point arithmetic.
+
+\question (Sauer \S0.3, \#11) Does the associative law hold for IEEE computer addition? Explain your response.
+
+\question (Sauer \S0.4, \#1) Identify for which values of $x$ there is subtraction of nearly equal numbers, and find an alternate form that avoids the problem.
+
+\begin{parts}
+\part $\displaystyle\frac{1-\sec^2(x)}{\tan(x)}$
+\part $\displaystyle\frac{1-(1-x)^3}{x}$
+\part $\displaystyle\frac{1}{1+x}-\frac{1}{1-x}$
+\end{parts}
+
+\end{questions}
+
+\end{document}
