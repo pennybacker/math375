@@ -1,0 +1,81 @@
+\documentclass[12pt,fleqn]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\newcommand{\class}{MATH/CS 375}
+\newcommand{\term}{Spring 2017}
+\newcommand{\doctitle}{Homework 3}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\fl}{\ensuremath{\operatorname{fl}}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\begin{document}
+
+
+Computer problems from the textbook contain ``CP'' in the exercise number. For these problems, remember to adequately label all plots and include code that you have written along with your solutions. All code that you include should be properly explained. Do all other problems by hand and make sure to your work. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question (Sauer \S1.2, \#10) Find the fixed points of each $g(x)$ and decide whether Fixed-Point Iteration is locally convergent to each fixed point.
+
+\begin{parts}
+\part $g(x) = x^2 - \frac32 x + \frac32$
+\part $g(x) = x^2 + \frac12 x - \frac12$
+\end{parts}
+
+\question (Sauer \S1.2, \#11) Express each equation as a fixed-point problem x = g(x) in three different ways.
+
+\begin{parts}
+\part $x^3 - x + e^x = 0$
+\part $3x^{-2} + 9x^3 = x^2$
+\end{parts}
+
+\question (Sauer \S1.2, \#16) Which of the following three Fixed-Point Iterations converge to the cube root of 4? Rank the ones that converge from fastest to slowest.
+
+\begin{parts}
+\part $g(x) = \frac{2}{\sqrt{x}}$
+\part $g(x) = \frac{3x}{4} + \frac{1}{x^2}$
+\part $g(x) = \frac23 x + \frac{4}{3x^2}$
+\end{parts}
+
+\question (Sauer \S1.2, \#21) Consider Fixed-Point Iteration applied to $g(x) = 1 - 5x + 15 x^2 - 5 x^3$.
+
+\begin{parts}
+\part Show that $1 - \sqrt{3/5}$, 1, and $1 + \sqrt{3/5}$ are fixed points.
+\part Show that none of the three fixed points is locally convergent.
+\end{parts}
+
+\question Modify the provided \verb$fpi$ function to implement the absolute error stopping criterion
+\[|x_{i+1}-x_i| < \mathrm{TOL}\]
+and return the first value $x_{i+1}$ for which this criterion is satisfied. You should add an input \verb$tol$ containing the desired tolerance. Display an error if the algorithm has not converged to withing \verb$tol$ after \verb$k$ iterations. Submit the code for your modified function.
+
+\question (Sauer \S1.2, CP2) Apply Fixed-Point Iteration to find the solution of each equation to eight correct decimal places. Use your modified function from the previous problem.
+
+\begin{parts}
+\part $x^5 + x = 1$
+\part $\sin(x) = 6x + 5$
+\part $\ln(x) + x^2 = 3$
+\end{parts}
+
+\newpage
+
+\question (Sauer \S1.2, CP4) Calculate the cube roots of the following numbers to eight correct decimal places, by using Fixed-Point Iteration with 
+\[g(x) = \frac13\left(2x + \frac{A}{x^2}\right),\]
+where $A$ is (a) 2 (b) 3 (c) 5. State your initial guess and the number of steps needed.
+
+\question (Sauer \S1.2, CP7) Question 4 considered Fixed-Point Iteration applied to
+\[g(x) = 1 - 5x + 15 x^2 - 5 x^3.\]
+Find initial guesses for which FPI (a) cycles endlessly through numbers in the interval $(0,1)$ (b) the same as (a), but the interval is $(1,2)$ (c) diverges to infinity. Cases (a) and (b) are examples of chaotic dynamics. In all three cases, FPI is unsuccessful.
+
+\end{questions}
+
+\end{document}
