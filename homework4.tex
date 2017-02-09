@@ -1,0 +1,80 @@
+\documentclass[12pt,fleqn]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\newcommand{\class}{MATH/CS 375}
+\newcommand{\term}{Spring 2017}
+\newcommand{\doctitle}{Homework 4}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\fl}{\ensuremath{\operatorname{fl}}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\begin{document}
+
+
+Computer problems from the textbook contain ``CP'' in the exercise number. For these problems, remember to adequately label all plots and include code that you have written along with your solutions. All code that you include should be properly explained. Do all other problems by hand and make sure to your work. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question (Sauer \S1.3, \#2) Find the forward and backward error for the following functions, where the root is 1/3 and the approximate root is $x_a = 0.3333$:
+
+\begin{parts}
+\part $f(x) = 3x - 1$
+\part $f(x) = (3x - 1)^2$
+\part $f(x) = (3x - 1)^3$
+\part $f(x) = (3x - 1)^{1/3}$
+\end{parts}
+
+\question (Sauer \S1.3, \#4)
+
+\begin{parts}
+\part Find the multiplicity of the root $r = 0$ of $f(x)=x^2 \sin x^2$.
+\part Find the forward and backward errors of the approximate root $x_a = 0.01$.
+\end{parts}
+
+\question (Sauer \S1.3, CP1) Let $f(x) = \sin x - x$.
+
+\begin{parts}
+\part Find the multiplicity of the root $r = 0$.
+\part Use Matlab's \verb$fzero$ command with initial guess $x = 0.1$ to locate a root. What are the forward and backward errors of \verb$fzero$'s response?
+\end{parts}
+
+\question (Sauer \S1.3, CP3)
+
+\begin{parts}
+\part Use \verb$fzero$ to find the root of $f(x) = 2x \cos x - 2x + \sin x^3$ on $[-0.1, 0.2]$. Report the forward and backward errors.
+\part Run the Bisection Method with initial interval $[-0.1, 0.2]$ to find as many correct digits as possible, and report your conclusion.
+\end{parts}
+
+\question (Sauer \S1.4, \#2) Apply two steps of Newton's Method with initial guess $x_0 = 1$.
+
+\begin{parts}
+\part $x^3 + x^2 - 1 = 0$
+\part $x^2 + 1/(x+1) - 3x = 0$
+\part $5x - 10 = 0$
+\end{parts}
+
+\question (Sauer \S1.4, \#6) Sketch a function $f$ and initial guess for which Newton's Method diverges.
+
+\question Write a function with the declaration \verb$function r = newton(f, fp, x0, k, tol)$ which implements Newton's Method. The inputs \verb$f$ and \verb$fp$ are function handles to implementations of $f(x)$ and $f'(x)$ respectively. The input \verb$x0$ is the initial guess $x_0$. The iteration should terminate if the estimated absolute error is less than \verb$tol$, and an error message should be displayed if the the iteration has not converged after \verb$k$ steps. The output \verb$r$ is an approximation to the root of $f(x)$. Include a listing of your function.
+
+\question (Sauer \S1.4, CP2) Each equation has one real root. Use Newton's Method to approximate the root to eight correct decimal places.
+
+\begin{parts}
+\part $x^5 + x = 1$
+\part $\sin x = 6x + 5$
+\part $\ln x + x^2 = 3$
+\end{parts}
+
+\end{questions}
+
+\end{document}
