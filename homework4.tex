@@ -65,7 +65,7 @@ Computer problems from the textbook contain ``CP'' in the exercise number. For t
 
 \question (Sauer \S1.4, \#6) Sketch a function $f$ and initial guess for which Newton's Method diverges.
 
-\question Write a function with the declaration \verb$function r = newton(f, fp, x0, k, tol)$ which implements Newton's Method. The inputs \verb$f$ and \verb$fp$ are function handles to implementations of $f(x)$ and $f'(x)$ respectively. The input \verb$x0$ is the initial guess $x_0$. The iteration should terminate if the estimated absolute error is less than \verb$tol$, and an error message should be displayed if the the iteration has not converged after \verb$k$ steps. The output \verb$r$ is an approximation to the root of $f(x)$. Include a listing of your function.
+\question Write a function with the declaration \verb$function xa = newton(f, fp, x0, k, tol)$ which implements Newton's Method. The inputs \verb$f$ and \verb$fp$ are function handles to implementations of $f(x)$ and $f'(x)$ respectively. The input \verb$x0$ is the initial guess $x_0$. The iteration should terminate if the estimated absolute error is less than \verb$tol$, and an error message should be displayed if the the iteration has not converged after \verb$k$ steps. The output \verb$xa$ is an approximation to the root $x_a$ of $f(x)$. Include a listing of your function.
 
 \question (Sauer \S1.4, CP2) Each equation has one real root. Use Newton's Method to approximate the root to eight correct decimal places.
 
