@@ -1,0 +1,86 @@
+\documentclass[12pt,fleqn]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\newcommand{\class}{MATH/CS 375}
+\newcommand{\term}{Spring 2017}
+\newcommand{\doctitle}{Homework 5}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\fl}{\ensuremath{\operatorname{fl}}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\begin{document}
+
+
+Computer problems from the textbook contain ``CP'' in the exercise number. For these problems, remember to adequately label all plots and include code that you have written along with your solutions. All code that you include should be properly explained. Do all other problems by hand and make sure to your work. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question (Sauer \S1.5, \#1) Apply two steps of the Secant Method to the following equations with initial guesses $x_0 = 1$ and $x_1 = 2$.
+
+\begin{parts}
+\part $x^3 = 2x + 2$
+\part $e^x + x = 7$
+\part $e^x + \sin x = 4$
+\end{parts}
+
+\question (Sauer \S1.5, \#7a) Consider the following four methods for calculating $2^{1/4}$, the fourth root of 2. Rank them for speed of convergence, from fastest to slowest. Be sure to give reasons for your ranking.
+
+\begin{parts}
+\part Bisection Method applied to $f(x) = x^4 - 2$
+\part Secant Method applied to $f(x) = x^4 - 2$
+\part Fixed Point Iteration applied to $g(x) = \frac{x}{2} + \frac{1}{x^3}$
+\part Fixed Point Iteration applied to $g(x) = \frac{x}{3} + \frac{1}{3x^3}$.
+\end{parts}
+
+\question Write a function with the declaration \verb$function xa = secant(f, x0, x1, k, tol)$ which implements the secant method. The input \verb$f$ is a function handle to an implementation of $f(x)$. The inputs \verb$x0$ and \verb$x1$ are the initial guesses $x_0$ and $x_1$. The iteration should terminate if the estimated absolute error is less than \verb$tol$, and an error message should be displayed if the the iteration has not converged after \verb$k$ steps. The output \verb$xa$ is an approximation to the root $x_a$ of $f(x)$. Include a listing of your function.
+
+\question (Sauer \S1.5, CP1) Use the Secant Method to find the (single) solution of each equation in Exercise 1. 
+
+\question Recall that if an iterative method converges with order $p$, we have
+\[\frac{\varepsilon_{i+1}}{\varepsilon_i^p} \approx M \quad\text{and}\quad \frac{\varepsilon_{i+2}}{\varepsilon_{i+1}^p} \approx M\]
+as $i \rightarrow \infty$ for some rate $M < \infty$.
+
+\begin{parts}
+\part By setting the two ratios equal to each other and taking logarithms, show that
+\[p \approx \frac{\log \varepsilon_{i+2}-\log \varepsilon_{i+1}}{\log\varepsilon_{i+1}-\log\varepsilon_i} ,\]
+thus giving us a procedure to estimate $p$.
+\part Devise an experiment using the estimate above to show that the secant method converges with order $p = (1+\sqrt{5})/2 \approx 1.6180$ to a simple root of $f(x)$. Include your objective function, initial guesses, and a table of your estimates of $p$ at each iteration.
+\end{parts}
+
+\question (Sauer \S2.1, \#2) Use Gaussian elimination to solve the systems:
+
+\begin{parts}
+\part \begin{align*}
+2x - 2y - z &= -2 \\
+4x + y - 2z &= 1 \\
+-2x + y - z &= -3
+\end{align*}
+\part \begin{align*}
+x + 2y - z &= 2 \\
+3y + z &= 4 \\
+2x - y + z &= 2
+\end{align*}
+\part \begin{align*}
+2x + y - 4z &= -7 \\
+x - y + z &= -2 \\
+-x + 3y - 2z &= 6
+\end{align*}
+\end{parts}
+
+\question (Sauer \S2.1, \#5) Assume that your computer completes a 5000 equation back substitution in 0.005 seconds. Use the approximate operation counts $n^2$ for back substitution and $2n^3/3$ for elimination to estimate how long it will take to do a complete Gaussian elimination of this size. Round your answer to the nearest second.
+
+\question (Sauer \S2.1, CP1) Put together the code fragments in this section to create a Matlab program for ``naive'' Gaussian elimination (meaning no row exchanges allowed). Use it to solve the systems of Exercise 6.
+
+\end{questions}
+
+\end{document}
