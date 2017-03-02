@@ -1,0 +1,77 @@
+\documentclass[12pt,fleqn]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\newcommand{\class}{MATH/CS 375}
+\newcommand{\term}{Spring 2017}
+\newcommand{\doctitle}{Homework 6}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\fl}{\ensuremath{\operatorname{fl}}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\begin{document}
+
+Computer problems from the textbook contain ``CP'' in the exercise number. For these problems, remember to adequately label all plots and include code that you have written along with your solutions. All code that you include should be properly explained. Do all other problems by hand and make sure to your work. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question (Sauer \S2.2, \#2) Find the LU factorization of the given matrices. Check by matrix multiplication.
+
+\begin{parts}
+\part $\begin{bmatrix} 3 & 1 & 2 \\ 6 & 3 & 4 \\ 3 & 1 & 5 \end{bmatrix}$
+\part $\begin{bmatrix} 4 & 2 & 0 \\ 4 & 4 & 2 \\ 2 & 2 & 3 \end{bmatrix}$
+\part $\begin{bmatrix} 1 & -1 & 1 & 2 \\ 0 & 2 & 1 & 0 \\ 1 & 3 & 4 & 4 \\ 0 & 2 & 1 & -1 \end{bmatrix}$
+\end{parts}
+
+\question (Sauer \S2.2, \#4) Solve the system by finding the LU factorization and then carrying out the two-step backsubstitution.
+
+\begin{parts}
+\part $\begin{bmatrix} 3 & 1 & 2 \\ 6 & 3 & 4 \\ 3 & 1 & 5 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \\ 3 \end{bmatrix}$
+\part $\begin{bmatrix} 4 & 2 & 0 \\ 4 & 4 & 2 \\ 2 & 2 & 3 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = \begin{bmatrix} 2 \\ 4 \\ 6 \end{bmatrix}$
+\end{parts}
+
+\question (Sauer \S2.2, \#6) Given the $1000 \times 1000$ matrix $A$, your computer can solve the 500 problems $Ax = b_1, \dots, Ax = b_{500}$ in exactly one minute, using $A = LU$ factorization methods. How much of the minute was the computer working on the $A = LU$ factorization? Round your answer to the nearest second.
+
+\emph{Note}: Use the approximate operation counts $n^2$ for each of forward and back substitution and $2n^3/3$ for LU factorization.
+
+\question (Sauer \S2.2, \#8) Assume that your computer can solve a $2000 \times 2000$ linear system $Ax = b$ in 0.1 second. Estimate the time required to solve 100 systems of 8000 equations in 8000 unknowns with the same coefficient matrix, using the LU factorization method.
+
+\emph{Note}: Use the approximate operation counts $n^2$ for each of forward and back substitution and $2n^3/3$ for LU factorization.
+
+\question (Sauer \S2.2, CP1) Use the code fragments for Gaussian elimination in the previous section to write a Matlab script to take a matrix $A$ as input and output $L$ and $U$. No row exchanges are allowed -- the program should be designed to shut down if it encounters a zero pivot. Check your program by factoring the matrices in Problem 1. 
+
+\question (Sauer \S2.2, CP2) Add two-step back substitution to your script from Computer Problem 1, and use it to solve the systems in Problem 2.
+
+\emph{Note}: In class, we referred to one of the two steps of this process as forward substitution.
+
+\question (Sauer \S2.3, \#2) Find the (infinity norm) condition number of
+
+\begin{parts}
+\part $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$
+\part $A = \begin{bmatrix} 1 & 2.01 \\ 3 & 6 \end{bmatrix}$
+\part $A = \begin{bmatrix} 6 & 3 \\ 4 & 2 \end{bmatrix}$
+\end{parts}
+
+\question (Sauer \S2.3, \#6) Find the relative forward and backward errors and error magnification factor for the following approximate solutions of the system $x_1 + 2 x_2 = 3$, $2 x_1 + 4.01 x_2 = 6.01$:
+
+\begin{parts}
+\part $[-10, 6]$\part $[-100,52]$
+\part $[-600,301]$
+\part $[-599,301]$
+\part What is the condition number of the coefficient matrix?
+\end{parts}
+
+\emph{Note}: Use the infinity norm for all your calculations.
+
+\end{questions}
+
+\end{document}
