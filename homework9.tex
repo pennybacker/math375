@@ -1,0 +1,59 @@
+\documentclass[12pt,fleqn]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\newcommand{\class}{MATH/CS 375}
+\newcommand{\term}{Spring 2017}
+\newcommand{\doctitle}{Homework 9}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\fl}{\ensuremath{\operatorname{fl}}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\begin{document}
+
+Computer problems from the textbook contain ``CP'' in the exercise number. For these problems, remember to adequately label all plots and include code that you have written along with your solutions. All code that you include should be properly explained. Do all other problems by hand and make sure to your work. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question (Sauer \S3.1, \#6) Write down a polynomial of degree exactly 5 that interpolates the four points $(1,1)$, $(2,3)$, $(3,3)$, $(4,4)$.
+
+\question (Sauer, \S3.1, \#8) Let $P(x)$ be the degree 9 polynomial that takes the value 112 at $x = 1$, takes the value 2 at $x = 10$, and equals zero for $x = 2,\dots,9$. Calculate $P(0)$.
+
+\question (Sauer, \S3.1, \#10) Let $P(x)$ be the degree 5 polynomial that takes the value 10 at $x = 1,2,3,4,5$ and the value 15 at $x = 6$. Find $P(7)$.
+
+\question (Sauer, \S3.1, \#14) Write down 4 noncollinear points $(1, y_1)$, $(2, y_2)$, $(3, y_3)$, $(4, y_4)$ that do not lie on any polynomial $y = P_3(x)$ of degree exactly three.
+
+\question (Sauer, \S3.2, \#2)
+
+\begin{parts}
+\part Given the data points $(1,0)$, $(2,\ln 2)$, $(4,\ln 4)$, find the degree 2 interpolating polynomial.
+\part Use the result of (a) to approximate $\ln 3$.
+\part Use Theorem 3.3 to give an error bound for the approximation in part (b).
+\part Compare the actual error to your error bound.
+\end{parts}
+
+\question (Sauer, \S3.2, \#4) Consider the interpolating polynomial for $f(x) = 1/(x + 5)$ with interpolation nodes $x = 0,2,4,6,8,10$. Find an upper bound for the interpolation error at (a) $x = 1$ and (b) $x = 5$.
+
+\question (Sauer, \S3.2, \#6) Assume that the polynomial $P_5(x)$ interpolates a function $f(x)$ at the six data points $(x_i,f(x_i))$ with $x$-coordinates $x_1 = 0$, $x_2 = .2$, $x_3 = .4$, $x_4 = .6$, $x_5 = .8$, and $x_6 = 1$. Assume that the interpolation error at $x = .3$ is $|f(.3) - P_5(.3)| = .01$. Estimate the new interpolation error $|f(.3) - P_7(.3)|$ that would result if two additional interpolation points $(x_6, y_6) = (.1, f(.1))$ and $(x_7, y_7) = (.5, f(.5))$ are added. What assumptions have you made to produce this estimate?
+
+\question (Sauer, \S3.2, CP1)
+
+\begin{parts}
+\part Use the method of divided differences to find the degree 4 interpolating polynomial $P_4(x)$ for the data $(0.6,1.433329)$, $(0.7,1.632316)$, $(0.8,1.896481)$, $(0.9,2.247908)$, and $(1.0,2.718282)$.
+\part Calculate $P_4(0.82)$ and $P_4(0.98)$.
+\part The preceding data come from the function $f(x) = e^{x^2}$. Use the interpolation error formula to find upper bounds for the error at $x = 0.82$ and $x = 0.98$, and compare the bounds with the actual error.
+\part Plot the actual interpolation error $P(x) = e^{x^2}$ on the intervals $[.5,1]$ and $[0,2]$.
+\end{parts}
+
+\end{questions}
+
+\end{document}
