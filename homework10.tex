@@ -1,0 +1,53 @@
+\documentclass[12pt,fleqn]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\newcommand{\class}{MATH/CS 375}
+\newcommand{\term}{Spring 2017}
+\newcommand{\doctitle}{Homework 10}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\fl}{\ensuremath{\operatorname{fl}}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\begin{document}
+
+Computer problems from the textbook contain ``CP'' in the exercise number. For these problems, remember to adequately label all plots and include code that you have written along with your solutions. All code that you include should be properly explained. Do all other problems by hand and make sure to your work. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question (Sauer \S4.1, \#2) Find the least squares solutions and RMSE\footnote{The RMSE is the 2-norm of the residual vector.} of the following systems:
+
+\begin{parts}
+\part $\begin{bmatrix}1 & 1 & 0 \\ 0 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 0 & 1\end{bmatrix} \begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix} = \begin{bmatrix}2 \\ 2 \\ 3 \\ 4\end{bmatrix}$
+\part $\begin{bmatrix}1 & 0 & 1 \\ 1 & 0 & 2 \\ 1 & 1 & 1 \\ 2 & 1 & 1\end{bmatrix} \begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix} = \begin{bmatrix}2 \\ 3 \\ 1 \\ 2\end{bmatrix}$
+\end{parts}
+
+\question (Sauer, \S4.1, \#8) Find the best line through each set of data points, and find the RMSE: (a) $(0,0)$, $(1,3)$, $(2,3)$, $(5,6)$. (b) $(1,2)$, $(3,2)$, $(4,1)$, $(6,3)$. (c) $(0,5)$, $(1,3)$, $(2,3)$, $(3,1)$.
+
+\question (Sauer, \S4.3, \#2) Apply classical Gram-Schmidt orthogonalization to find the full $QR$ factorization of the following matrices:
+
+\begin{parts}
+\part $\begin{bmatrix}2 & 3 \\ -2 & -6 \\ 1 & 0\end{bmatrix}$
+\part $\begin{bmatrix}-4 & -4 \\ -2 & 7 \\ 4 & -5\end{bmatrix}$
+\end{parts}
+
+\question (Sauer, \S4.3, \#7) Use the $QR$ factorization from the last problem to solve the least squares problem.
+
+\begin{parts}
+\part $\begin{bmatrix}2 & 3 \\ -2 & -6 \\ 1 & 0\end{bmatrix} \begin{bmatrix}x_1 \\ x_2\end{bmatrix} = \begin{bmatrix}3 \\ -3 \\ 6\end{bmatrix}$
+\part $\begin{bmatrix}-4 & -4 \\ -2 & 7 \\ 4 & -5\end{bmatrix} \begin{bmatrix}x_1 \\ x_2\end{bmatrix} = \begin{bmatrix}3 \\ 9 \\ 0\end{bmatrix}$
+\end{parts}
+
+\question (Sauer, \S4.3, CP1) Write a Matlab program that implements classical Gram-Schmidt to find the reduced\footnote{In class we called this the thin $QR$ factorization.} $QR$ factorization. Check your work by comparing factorizations of the matrices in the last two problems with the Matlab \verb$qr(A,0)$ command or equivalent. The factorization is unique up to signs of the entries of $Q$ and $R$.
+\end{questions}
+
+\end{document}
