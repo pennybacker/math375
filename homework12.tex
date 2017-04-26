@@ -1,0 +1,58 @@
+\documentclass[12pt,fleqn]{exam}
+
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\newcommand{\class}{MATH/CS 375}
+\newcommand{\term}{Spring 2017}
+\newcommand{\doctitle}{Homework 12}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\fl}{\ensuremath{\operatorname{fl}}}
+
+\parindent 0ex
+
+\pagestyle{head}
+\header{\bf \class}{\bf \doctitle\ - Page \thepage\ of \numpages}{\bf \term}
+\headrule
+
+\begin{document}
+
+Computer problems from the textbook contain ``CP'' in the exercise number. For these problems, remember to adequately label all plots and include code that you have written along with your solutions. All code that you include should be properly explained. Do all other problems by hand and make sure to your work. A clear and complete presentation of your solutions is required for full credit.
+
+\begin{questions}
+
+\question (Sauer \S6.1, \#3a-c) Use separation of variables to find solutions of the IVP given by $y(0) = 1$ and the following differential equations:
+
+\begin{parts}
+\part $y' = t$
+\part $y' = t^2 y$
+\part $y' = 2(t+1)y$
+\end{parts}
+
+\question (Sauer \S6.1, CP1) Apply Euler's Method with step size $h = 0.1$ on $[0,1]$ to the initial value problems inProblem 1. Print a table of the $t$ values, Euler approximations, and error (difference from exact solution) at each step.
+
+\question (Sauer \S6.1, CP4) For the IVPs in Problem 1, make a log-log plot of the error of Euler's Method at $t = 1$ as a function of $h = 0.1 \times 2^{-k}$ for $0 \leq k \leq 5$. Use the Matlab \verb$loglog$ command.
+
+\question (Sauer \S6.2, CP1) Apply the Explicit Trapezoid Method on a grid of step size $h = 0.1$ in $[0,1]$ to the initial value problems in Problem 1. Print a table of the $t$ values, approximations, and global truncation error at each step.
+
+\question (Sauer \S6.2, CP3) For the IVPs in Problem 1, plot the global truncation error of the Explicit Trapezoid Method at $t = 1$ as a function of $h = 0.1 \times 2^{-k}$ for $0 \leq k \leq 5$. Use a log-log plot.
+
+\question (Sauer, \S6.4, CP2) Apply the fourth-order Runge-Kutta Method solution on a grid of step size $h = 0.1$ in $[0,1]$ for the initial value problems in Problem 1. Print a table of the $t$ values, approximations, and global truncation error at each step.
+
+\question (Sauer \S6.4, CP9) For the IVPs in Problem 1, plot the global truncation error of the explicit Trapezoid Method at $t = 1$ as a function of $h = 0.1 \times 2^{-k}$ for $0 \leq k \leq 5$. Use a log-log plot.
+
+\question (Sauer, \S6.3, \#3) Convert the higher-order ordinary differential equation to a first-order system of equations.
+
+\begin{parts}
+\part $y'' - ty = 0$ (Airy's equation)
+\part $y'' - 2ty' + 2y = 0$ (Hermite's equation)\part $y'' - ty' - y = 0$
+\end{parts}
+
+
+
+\end{questions}
+
+\end{document}
